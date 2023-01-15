@@ -9,8 +9,6 @@ services:
       - ./docker/php/conf.d/default.ini:/usr/local/etc/php/conf.d/default.ini
     depends_on:
       - database
-      - redis
-      - elasticsearch
   database:
     image: mysql:8.0.28
     platform: linux/x86_64
