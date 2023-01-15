@@ -201,6 +201,42 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
     }
 
     /**
+     * @return DateTimeInterface
+     */
+    public function getStartDate(): DateTimeInterface
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param DateTimeInterface $startDate
+     * @return Employee
+     */
+    public function setStartDate(DateTimeInterface $startDate): Employee
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getDismissalDate(): ?DateTimeInterface
+    {
+        return $this->dismissalDate;
+    }
+
+    /**
+     * @param DateTimeInterface|null $dismissalDate
+     * @return Employee
+     */
+    public function setDismissalDate(?DateTimeInterface $dismissalDate): Employee
+    {
+        $this->dismissalDate = $dismissalDate;
+        return $this;
+    }
+
+    /**
      * @return Department|null
      */
     public function getDepartment(): ?Department
