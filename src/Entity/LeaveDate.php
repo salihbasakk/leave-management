@@ -9,6 +9,7 @@ use DateTimeInterface;
 
 #[ORM\Entity(repositoryClass: LeaveDateRepository::class)]
 #[ORM\Index(columns: ['start_date', 'end_date'], name: 'range_idx')]
+#[ORM\HasLifecycleCallbacks]
 class LeaveDate extends BaseEntity
 {
     #[ORM\Column(type: Types::TEXT, nullable: true)]
