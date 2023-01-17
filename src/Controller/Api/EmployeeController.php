@@ -4,7 +4,7 @@ namespace App\Controller\Api;
 
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
-use App\Request\EditEmployeeRequest;
+use App\Request\BaseEmployeeRequest;
 use App\Request\EmployeeRequest;
 use App\Service\EmployeeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Throwable;
 
-#[Route('/employee', name: 'employee')]
+#[Route('/admin/employee', name: 'employee')]
 #[IsGranted('ROLE_ADMINISTRATION')]
 class EmployeeController extends AbstractController
 {
@@ -69,7 +69,7 @@ class EmployeeController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '_edit', methods: ['PUT'])]
-    public function edit(EditEmployeeRequest $request, Employee $employee, EmployeeService $employeeService): Response
+    public function edit(BaseEmployeeRequest $request, Employee $employee, EmployeeService $employeeService): Response
     {
         try {
             $employee = $employeeService->editEmployee($employee, $request);

@@ -118,4 +118,15 @@ class LeaveDate extends BaseEntity
         $this->employee = $employee;
         return $this;
     }
+
+    public function serialize(): array
+    {
+        return [
+            'employee' => $this->employee->serialize(),
+            'startDate' => $this->startDate->format('Y-m-d H:i:s'),
+            'endDate' => $this->endDate->format('Y-m-d H:i:s'),
+            'status' => $this->getStatus()->getId(),
+            'description' => $this->description
+        ];
+    }
 }

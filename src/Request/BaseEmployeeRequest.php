@@ -5,7 +5,7 @@ namespace App\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class EditEmployeeRequest extends BaseRequest
+class BaseEmployeeRequest extends BaseRequest
 {
     #[Assert\Email(message: 'The email {{ value }} is not a valid email.')]
     #[NotBlank]
