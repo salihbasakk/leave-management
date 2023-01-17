@@ -19,7 +19,7 @@ use DateTimeInterface;
 #[ORM\HasLifecycleCallbacks]
 class Employee extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    const ROLE_USER = ['ROLE_USER'];
+    const ROLE_EMPLOYEE = ['ROLE_EMPLOYEE'];
     const ROLE_MANAGER = ['ROLE_MANAGER'];
     const ROLE_ADMINISTRATION = ['ROLE_ADMINISTRATION'];
 
@@ -69,7 +69,7 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return $this->email;
     }
 
     /**
@@ -78,8 +78,6 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_EMPLOYEE';
 
         return array_unique($roles);
     }
@@ -288,6 +286,7 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
             'startDate' => $this->startDate->format('Y-m-d H:i:s'),
             'dismissalDate' => $this->dismissalDate?->format('Y-m-d H:i:s'),
             'departmentId' => $this->department?->getId(),
+            'roles' => $this->getRoles()
         ];
     }
 }
