@@ -14,11 +14,11 @@ security:
             provider: app_user_provider
             json_login:
                 username_path: email
-                check_path: /api/login_check
+                check_path: /api/login
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
         api:
-            pattern: ^/api/(register)/
+            pattern: ^/api
             stateless: true
             jwt: ~
         dev:
@@ -26,6 +26,7 @@ security:
             security: false
 
     access_control:
+        - { path: ^/api/register, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: ROLE_EMPLOYEE }
 
 when@test:

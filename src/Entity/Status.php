@@ -6,6 +6,7 @@ use App\Repository\StatusRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StatusRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Status extends BaseEntity
 {
     #[ORM\Column(length: 100)]

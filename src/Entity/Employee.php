@@ -16,16 +16,21 @@ use DateTimeInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\Index(columns: ['name', 'surname'], name: 'name_idx', flags: ['fulltext'])]
 #[ORM\Index(columns: ['department_id'], name: 'department_idx')]
+#[ORM\HasLifecycleCallbacks]
 class Employee extends BaseEntity implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    const ROLE_USER = ['ROLE_USER'];
+    const ROLE_MANAGER = ['ROLE_MANAGER'];
+    const ROLE_ADMINISTRATION = ['ROLE_ADMINISTRATION'];
+
     #[ORM\Column]
     private array $roles = [];
 
     #[ORM\Column]
-    private ?string $password = null;
+    private string $password;
 
     #[ORM\Column(length: 150, unique: true)]
-    private ?string $email = null;
+    private string $email;
 
     #[ORM\Column(length: 150)]
     private string $name;
@@ -33,20 +38,20 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
     #[ORM\Column(length: 150)]
     private string $surname;
 
-    #[ORM\Column(type: Types::BIGINT)]
+    #[ORM\Column(type: Types::BIGINT, unique: true)]
     private string $identityNumber;
 
-    #[ORM\Column(type: Types::BIGINT)]
+    #[ORM\Column(type: Types::BIGINT, unique: true)]
     private string $insuranceNumber;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     protected DateTimeInterface $startDate;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     protected ?DateTimeInterface $dismissalDate = null;
 
     #[ORM\ManyToOne(inversedBy: 'employee')]
-    #[ORM\JoinColumn(name: 'department_id')]
+    #[ORM\JoinColumn(name: 'department_id', nullable: true)]
     private ?Department $department = null;
 
     #[ORM\OneToMany(mappedBy: 'employee', targetEntity: LeaveDate::class, orphanRemoval: true)]
@@ -111,18 +116,18 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * @param string|null $email
+     * @param string $email
      * @return Employee
      */
-    public function setEmail(?string $email): Employee
+    public function setEmail(string $email): Employee
     {
         $this->email = $email;
         return $this;
@@ -272,15 +277,17 @@ class Employee extends BaseEntity implements UserInterface, PasswordAuthenticate
         return $this;
     }
 
-    public function removeLeaveDate(LeaveDate $leaveDate): self
+    public function serialize(): array
     {
-        if ($this->leaveDates->removeElement($leaveDate)) {
-            // set the owning side to null (unless already changed)
-            if ($leaveDate->getEmployee() === $this) {
-                $leaveDate->setEmployee(null);
-            }
-        }
-
-        return $this;
+        return [
+            'email' => $this->email,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'identityNumber' => $this->identityNumber,
+            'insuranceNumber' => $this->insuranceNumber,
+            'startDate' => $this->startDate->format('Y-m-d H:i:s'),
+            'dismissalDate' => $this->dismissalDate?->format('Y-m-d H:i:s'),
+            'departmentId' => $this->department?->getId(),
+        ];
     }
 }

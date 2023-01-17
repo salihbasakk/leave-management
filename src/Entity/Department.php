@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DepartmentRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Department extends BaseEntity
 {
     #[ORM\Column(length: 150)]

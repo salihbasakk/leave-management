@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 use DateTimeInterface;
 
-#[ORM\HasLifecycleCallbacks]
 class BaseEntity
 {
     #[ORM\Id]
