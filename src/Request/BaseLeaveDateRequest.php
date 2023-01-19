@@ -25,6 +25,7 @@ class BaseLeaveDateRequest extends BaseRequest
      */
     #[Assert\DateTime]
     #[Assert\GreaterThan(propertyPath: 'startDate')]
+    #[NotBlank]
     public string $endDate;
 
     #[Assert\Type(
