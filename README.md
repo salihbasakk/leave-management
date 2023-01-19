@@ -13,11 +13,14 @@ Clone the project repository:
 git clone git@github.com:salihbasakk/leave-management.git
 ```
 Create .env file from .env.dist (with related database configuration)
+
 Example: 
 
+```bash
 DATABASE_NAME=leave-management
 DATABASE_ROOT_PASSWORD=123456!
 DATABASE_PORT=3306
+```
 
 ```bash
 docker-compose up -d --build
