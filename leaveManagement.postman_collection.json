@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "2eba8f8b-b550-42eb-9897-2da8b98f2d73",
+		"name": "Leave Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14135487"
+	},
+	"item": [
+		{
+			"name": "Authentication / Authorization",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/login",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"123456\",\n    \"name\": \"Salih\",\n    \"surname\": \"Başak\",\n    \"identityNumber\": 12344556677,\n    \"insuranceNumber\": 1234455667788,\n    \"startDate\": \"2023-01-16 01:14:48\",\n    \"departmentId\": 1,\n    \"roles\": [\"ROLE_ADMINISTRATION\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/register",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "List All Employees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5NzE2MDAsImV4cCI6MTY3Mzk3NTIwMCwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.QwpqavQpwtwqLU63QC_ByzLpSNmoeliA99ay2Us4y9DLzKERBstPML9CXBNd4RsCGgLx_pvB2PswGPny9CrWp9Xndajzb6HOY2JPbcG5arkQCLc4O8nLkE4cmBYSe1hWw3et-VlSLB0lqFGmcE6JvKju0czntsD6dWdX4KVIiCyPXxgUsoDG3m1CVXZJ1GKCjEo3DH9gW8fMfnlHzDXubsRU5KFHx0k-o9EFjaaGEgd4vzQjFxiad-rludtoID-vgVK71JD5ZDahiJlFOcFK9KUcE6U-ZtBs25pAbkgWAfVJW53Ny5n-NorRd7LEGzBeFa3TC7VSfMzy4SMlO-t6Fg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/admin/api/employee",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5ODkxMDAsImV4cCI6MTY3Mzk5MjcwMCwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.DHjz5IOHDlmYUQpEWYfeXXS0pc8-6Yln-Vxt8RRlntHdU-41I_yPKHhQjzF3Esv1izUrOiukFFKYrbjD0YxyLp4tDhlWW12tWEpu9TyuNdon_vNbfQIPUa5tWAEqstRFAVJEWs1uUYoT9lcbjTzyrvTkTI7Kk8j1wUenWFGit0QVd2Oqk9QiC_GVWFD2DZfe_O4NUA7hZRGnft7cAGd41yL10aO666O1MhoJoEqvWnRVZIG8TzefDoFBKoJdPUCmmshKwFLOmAwTH7WCq81pALsMsTeEb_LxB4_4khxZeR3q-yQHcz-YeNNtcYlxNikpGS19dz5ipAoO1Jx1hoMslw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/admin/employee/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5NzQ3OTYsImV4cCI6MTY3Mzk3ODM5Niwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.z_-1BHAhWIEoG6yeIOQ6fJ_9jAq4P1mUga1TZoWzKicij1amINc-c1f6QyZMU-vudwCU1y8ALkfY536lIwyrjRovUB3NMijKQmZEWaIimOJ6wYkYrRIf3gGAkGriwafy7iUJozC53G4Mr_N4-CZgxMXgzjKInByyEtvg1BuJSOSGnkhfC62OSNmwCfjCeYsZdixtPoW_3LpAoxVDOGNeZjr8aHkOQxZcsElqn6ZFp6nLwtzuNNufeOOHIXy1G5eAfNIi2uzh4gQiuLFt0st1BC-X6h-1_t02BwxHJ3RK4ReJRKZy6QZfn2cls8uE1HYsHOzPuWZh_2LM27PgPS3nHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"123456\",\n    \"name\": \"Salih\",\n    \"surname\": \"Başak\",\n    \"identityNumber\": 12344556637,\n    \"insuranceNumber\": 1234455667748,\n    \"startDate\": \"2023-01-16 01:14:48\",\n    \"departmentId\": 1,\n    \"roles\": [\"ROLE_EMPLOYEE\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/employee/new",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"employee",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5NzQ3OTYsImV4cCI6MTY3Mzk3ODM5Niwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.z_-1BHAhWIEoG6yeIOQ6fJ_9jAq4P1mUga1TZoWzKicij1amINc-c1f6QyZMU-vudwCU1y8ALkfY536lIwyrjRovUB3NMijKQmZEWaIimOJ6wYkYrRIf3gGAkGriwafy7iUJozC53G4Mr_N4-CZgxMXgzjKInByyEtvg1BuJSOSGnkhfC62OSNmwCfjCeYsZdixtPoW_3LpAoxVDOGNeZjr8aHkOQxZcsElqn6ZFp6nLwtzuNNufeOOHIXy1G5eAfNIi2uzh4gQiuLFt0st1BC-X6h-1_t02BwxHJ3RK4ReJRKZy6QZfn2cls8uE1HYsHOzPuWZh_2LM27PgPS3nHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"name\": \"Salih\",\n    \"surname\": \"Başak\",\n    \"identityNumber\": 12344556674,\n    \"insuranceNumber\": 1234455667783,\n    \"startDate\": \"2023-01-16 08:00:00\",\n    \"departmentId\": 1,\n    \"roles\": [\n        \"ROLE_ADMINISTRATION\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/employee/4/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"employee",
+								"4",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5NzQ3OTYsImV4cCI6MTY3Mzk3ODM5Niwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.z_-1BHAhWIEoG6yeIOQ6fJ_9jAq4P1mUga1TZoWzKicij1amINc-c1f6QyZMU-vudwCU1y8ALkfY536lIwyrjRovUB3NMijKQmZEWaIimOJ6wYkYrRIf3gGAkGriwafy7iUJozC53G4Mr_N4-CZgxMXgzjKInByyEtvg1BuJSOSGnkhfC62OSNmwCfjCeYsZdixtPoW_3LpAoxVDOGNeZjr8aHkOQxZcsElqn6ZFp6nLwtzuNNufeOOHIXy1G5eAfNIi2uzh4gQiuLFt0st1BC-X6h-1_t02BwxHJ3RK4ReJRKZy6QZfn2cls8uE1HYsHOzPuWZh_2LM27PgPS3nHg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/employee/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"employee",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leave Date",
+			"item": [
+				{
+					"name": "Add Leave Date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5ODkxMDAsImV4cCI6MTY3Mzk5MjcwMCwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.DHjz5IOHDlmYUQpEWYfeXXS0pc8-6Yln-Vxt8RRlntHdU-41I_yPKHhQjzF3Esv1izUrOiukFFKYrbjD0YxyLp4tDhlWW12tWEpu9TyuNdon_vNbfQIPUa5tWAEqstRFAVJEWs1uUYoT9lcbjTzyrvTkTI7Kk8j1wUenWFGit0QVd2Oqk9QiC_GVWFD2DZfe_O4NUA7hZRGnft7cAGd41yL10aO666O1MhoJoEqvWnRVZIG8TzefDoFBKoJdPUCmmshKwFLOmAwTH7WCq81pALsMsTeEb_LxB4_4khxZeR3q-yQHcz-YeNNtcYlxNikpGS19dz5ipAoO1Jx1hoMslw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2023-03-25 08:30:00\",\n    \"endDate\": \"2023-03-30 17:00:00\",\n    \"employeeId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/leave-date/new",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"leave-date",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Leave Date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5ODkxMDAsImV4cCI6MTY3Mzk5MjcwMCwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.DHjz5IOHDlmYUQpEWYfeXXS0pc8-6Yln-Vxt8RRlntHdU-41I_yPKHhQjzF3Esv1izUrOiukFFKYrbjD0YxyLp4tDhlWW12tWEpu9TyuNdon_vNbfQIPUa5tWAEqstRFAVJEWs1uUYoT9lcbjTzyrvTkTI7Kk8j1wUenWFGit0QVd2Oqk9QiC_GVWFD2DZfe_O4NUA7hZRGnft7cAGd41yL10aO666O1MhoJoEqvWnRVZIG8TzefDoFBKoJdPUCmmshKwFLOmAwTH7WCq81pALsMsTeEb_LxB4_4khxZeR3q-yQHcz-YeNNtcYlxNikpGS19dz5ipAoO1Jx1hoMslw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2023-02-10 08:30:00\",\n    \"endDate\": \"2023-02-15 17:00:00\",\n    \"employeeId\": 1,\n    \"statusId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/leave-date/1/edit",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"leave-date",
+								"1",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Leave Date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzM5ODkxMDAsImV4cCI6MTY3Mzk5MjcwMCwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.DHjz5IOHDlmYUQpEWYfeXXS0pc8-6Yln-Vxt8RRlntHdU-41I_yPKHhQjzF3Esv1izUrOiukFFKYrbjD0YxyLp4tDhlWW12tWEpu9TyuNdon_vNbfQIPUa5tWAEqstRFAVJEWs1uUYoT9lcbjTzyrvTkTI7Kk8j1wUenWFGit0QVd2Oqk9QiC_GVWFD2DZfe_O4NUA7hZRGnft7cAGd41yL10aO666O1MhoJoEqvWnRVZIG8TzefDoFBKoJdPUCmmshKwFLOmAwTH7WCq81pALsMsTeEb_LxB4_4khxZeR3q-yQHcz-YeNNtcYlxNikpGS19dz5ipAoO1Jx1hoMslw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost/api/admin/leave-date/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"leave-date",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilterEmployee",
+			"item": [
+				{
+					"name": "Filter Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NzQxNjQ3NzcsImV4cCI6MTY3NDE2ODM3Nywicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBVElPTiJdLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.EXIBb0tofvwJRzYq-BbDlj4VS7bdJtd6AemP_cIkQJb2VF0GrAxe7KD_kHj8SWzSk-Ab25sTZjjBqUhGskksU35IE2qbhgoFPEWPsZAqMsKAEizEtYPbOTGUDz44PU4jpv5e6fKtExO6wNeZw3CIzJ9P-ZwRL0KCfVvsdBaWZXMMfMYWE7Odq6WpJrHCOzSK7p3MUK7od7W98XuC_cycwqL7NPnc9V2QFIX5maVoHSWl1BcxxWzUKV1-l6q29299a1iErpKtyCfHYzlVcKXTrauwu787tIra9DCItfRykuNNZiD6ik0P2QcgLm5caPfB6zFzX1nP19JjCSmAJx_bZA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/api/admin/filter/employee/aliBaşa/2023-02-10+08%3A30%3A00/2023-02-15+17%3A30%3A00/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"admin",
+								"filter",
+								"employee",
+								"aliBaşa",
+								"2023-02-10+08%3A30%3A00",
+								"2023-02-15+17%3A30%3A00",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
