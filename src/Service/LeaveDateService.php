@@ -30,7 +30,7 @@ class LeaveDateService
     {
         $leaveDate = new LeaveDate();
 
-        $leaveDate->setStatus($this->statusRepository->findOneBy(['name' => Status::STATUS_PENDING]));
+        $leaveDate->setStatus($this->statusRepository->findOneBy(['name' => Status::STATUS_APPROVED]));
 
         return $this->saveLeaveDate($request, $leaveDate);
     }
